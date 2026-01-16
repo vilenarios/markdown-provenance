@@ -207,6 +207,10 @@ wc -l ~/.markdown-provenance/transactions.jsonl
 - [ViewBlock](https://viewblock.io/arweave) - Arweave block explorer
 - [Permaweb Cookbook](https://cookbook.arweave.net/) - Developer resources
 
+## Acknowledgments
+
+A huge thank you to the [ArDrive](https://ardrive.io) community for providing **free uploads for files under 100KB** through their Turbo SDK. This generous offering makes permanent, decentralized storage accessible to everyone and is what makes this tool practical for everyday use. Their commitment to lowering barriers to the permaweb is what enables projects like Markdown Provenance to exist.
+
 ## License
 
 MIT
