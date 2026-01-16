@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "markdown-provenance",
-      "source": ".",
+      "source": "./plugins/markdown-provenance",
       "description": "Upload markdown files to Arweave for permanent, decentralized storage with IPFS CID tagging",
       "version": "0.0.1",
       "author": {
