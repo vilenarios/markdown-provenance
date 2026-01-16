@@ -8,16 +8,38 @@ This command is **explicit invocation only**. It will NOT automatically trigger 
 
 ## Quick Start
 
-1. Set up your Arweave wallet (see below)
-2. Register with Claude Code (see below)
+1. Install the plugin (see Installation below)
+2. Set up your Arweave wallet (see Wallet Setup below)
 3. Run: `/markdown-provenance path/to/file.md`
 4. Receive your permanent viewblock.io URL
 
 ## Installation
 
+### Via Claude Code Plugin Marketplace (Recommended)
+
 ```bash
-cd /path/to/markdown-provenance
+# Add the marketplace (one-time)
+/plugin marketplace add https://github.com/rickmanelius/markdown-provenance
+
+# Install the plugin
+/plugin install markdown-provenance
+```
+
+After installation, run `npm install` in the plugin directory to install dependencies:
+
+```bash
+cd ~/.claude/plugins/cache/markdown-provenance* && npm install
+```
+
+### Via Git Clone (Alternative)
+
+```bash
+git clone https://github.com/rickmanelius/markdown-provenance.git
+cd markdown-provenance
 npm install
+
+# Symlink to Claude plugins directory
+ln -s "$(pwd)" ~/.claude/plugins/markdown-provenance
 ```
 
 ## Wallet Setup
@@ -59,31 +81,6 @@ For larger files, you need AR tokens:
 2. Purchase AR from an exchange (Binance, Gate.io, etc.)
 
 3. Send AR to your wallet address
-
-## Registering with Claude Code
-
-To make `/markdown-provenance` available in Claude Code, you have several options:
-
-### Option 1: Symlink to plugins directory (Recommended)
-
-```bash
-ln -s /path/to/markdown-provenance ~/.claude/plugins/markdown-provenance
-```
-
-### Option 2: Add to existing plugin
-
-If you have an existing plugin, copy the `commands/` and `SKILL.md` to that plugin.
-
-### Option 3: Reference in CLAUDE.md
-
-Add to your global or project CLAUDE.md:
-
-```markdown
-## Available Commands
-
-- `/markdown-provenance <file>` - Upload markdown to Arweave permanent storage
-  Location: /path/to/markdown-provenance
-```
 
 ## Usage
 

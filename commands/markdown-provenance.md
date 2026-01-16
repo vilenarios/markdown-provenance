@@ -12,14 +12,14 @@ Upload the specified markdown file to Arweave permanent storage.
 
 1. First, verify the file exists at the specified path
 2. Check that MP_WALLET_PATH environment variable is set
-3. Run the upload script from the markdown-provenance directory
+3. Run the upload script from the markdown-provenance plugin directory
 4. Report the ViewBlock URL and IPFS CID to the user
 
 ## Commands
 
 ```bash
-# Navigate to the skill directory and run upload
-cd /Users/rickmanelius/git/rickmanelius/markdown-provenance && npm run upload "$ARGUMENTS"
+# Navigate to the plugin directory and run upload
+cd "${CLAUDE_PLUGIN_ROOT}" && npm run upload "$ARGUMENTS"
 ```
 
 ## On Success

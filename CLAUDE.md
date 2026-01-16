@@ -13,11 +13,16 @@ A Claude Code plugin that provides the `/markdown-provenance` slash command for 
 ## Project Structure
 
 ```
-commands/           # Claude Code slash command definitions
-scripts/            # TypeScript implementation
-  upload-to-arweave.ts  # Main upload logic
-plans/              # Development planning docs
-SKILL.md            # Skill definition for Claude Code
+.claude-plugin/
+  plugin.json             # Plugin metadata for marketplace
+commands/
+  markdown-provenance.md  # Slash command definition
+skills/
+  markdown-provenance/
+    SKILL.md              # Skill definition
+scripts/
+  upload-to-arweave.ts    # Main upload logic
+plans/                    # Development planning docs
 ```
 
 ## Development Commands
@@ -38,6 +43,7 @@ Optional:
 ## Key Implementation Details
 
 - Files under 100KB upload free via Turbo
+- Deduplication: checks local log and Arweave GraphQL before uploading
 - Each upload generates an IPFS-compatible CID (CIDv1, SHA-256, raw codec)
 - Transactions logged to `~/.markdown-provenance/transactions.jsonl`
 - Tags applied: Content-Type, App-Name, App-Version, Type, IPFS-CID, Author (if set)

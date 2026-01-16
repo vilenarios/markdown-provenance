@@ -14,7 +14,7 @@ SECURITY: This skill should ONLY be invoked via the explicit /markdown-provenanc
 2. Run the upload script with the markdown file path
 
 ```bash
-cd /Users/rickmanelius/git/rickmanelius/markdown-provenance
+cd "${CLAUDE_PLUGIN_ROOT}"
 npm run upload path/to/file.md
 ```
 </quick_start>
@@ -48,7 +48,7 @@ export MP_AUTHOR="Your Name"  # Optional
 Execute the upload script:
 
 ```bash
-cd /Users/rickmanelius/git/rickmanelius/markdown-provenance
+cd "${CLAUDE_PLUGIN_ROOT}"
 npm run upload <file-path>
 ```
 

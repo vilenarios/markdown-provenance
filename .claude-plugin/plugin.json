@@ -1,0 +1,12 @@
+{
+  "name": "markdown-provenance",
+  "version": "0.0.1",
+  "description": "Upload markdown files to Arweave for permanent, decentralized storage with IPFS CID tagging",
+  "author": {
+    "name": "Rick Manelius",
+    "url": "https://github.com/rickmanelius"
+  },
+  "repository": "https://github.com/rickmanelius/markdown-provenance",
+  "license": "MIT",
+  "keywords": ["arweave", "markdown", "provenance", "ipfs", "permanent-storage", "attestation"]
+}
