@@ -1,0 +1,23 @@
+{
+  "name": "markdown-provenance",
+  "version": "0.0.1",
+  "description": "Markdown Provenance plugin marketplace",
+  "owner": {
+    "name": "Rick Manelius",
+    "url": "https://github.com/rickmanelius"
+  },
+  "plugins": [
+    {
+      "name": "markdown-provenance",
+      "source": ".",
+      "description": "Upload markdown files to Arweave for permanent, decentralized storage with IPFS CID tagging",
+      "version": "0.0.1",
+      "author": {
+        "name": "Rick Manelius",
+        "url": "https://github.com/rickmanelius"
+      },
+      "homepage": "https://github.com/rickmanelius/markdown-provenance",
+      "tags": ["arweave", "markdown", "provenance", "ipfs", "permanent-storage"]
+    }
+  ]
+}
