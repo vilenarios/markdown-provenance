@@ -1,0 +1,25 @@
+{
+  "name": "arweave-markdown",
+  "version": "0.0.1",
+  "description": "Claude Code slash command for uploading markdown files to Arweave permanent storage",
+  "type": "module",
+  "scripts": {
+    "upload": "npx tsx scripts/upload-to-arweave.ts",
+    "generate-wallet": "npx tsx scripts/generate-wallet.ts"
+  },
+  "dependencies": {
+    "@ardrive/turbo-sdk": "^1.0.0",
+    "arbundles": "^0.11.2",
+    "arweave": "^1.15.7",
+    "multiformats": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT"
+}
