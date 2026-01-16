@@ -25,20 +25,27 @@ This command is **explicit invocation only**. It will NOT automatically trigger 
 /plugin install markdown-provenance
 ```
 
-After installation, run `npm install` in the plugin directory to install dependencies:
+After installation, install npm dependencies:
 
 ```bash
-cd ~/.claude/plugins/cache/markdown-provenance* && npm install
+# Find and install dependencies in the plugin directory
+cd ~/.claude/plugins/cache/markdown-provenance/markdown-provenance/*/  && npm install
+```
+
+Or if that path doesn't work, find it with:
+
+```bash
+find ~/.claude/plugins/cache -name "package.json" -path "*markdown-provenance*" -exec dirname {} \; | head -1 | xargs -I {} sh -c 'cd {} && npm install'
 ```
 
 ### Via Git Clone (Alternative)
 
 ```bash
 git clone https://github.com/rickmanelius/markdown-provenance.git
-cd markdown-provenance
+cd markdown-provenance/plugins/markdown-provenance
 npm install
 
-# Symlink to Claude plugins directory
+# Symlink the plugin to Claude plugins directory
 ln -s "$(pwd)" ~/.claude/plugins/markdown-provenance
 ```
 
