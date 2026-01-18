@@ -165,6 +165,8 @@ function logTransaction(result: UploadResult, fileName: string): void {
 
 interface UploadOptions {
   authorOverride?: string;
+  fileName?: string;
+  source?: string;
 }
 
 async function uploadMarkdown(filePath: string, options: UploadOptions = {}): Promise<UploadResult> {
@@ -249,6 +251,16 @@ async function uploadMarkdown(filePath: string, options: UploadOptions = {}): Pr
     tags.push({ name: 'Author', value: author });
   }
 
+  // Add optional fileName tag (custom filename for lookup)
+  if (options.fileName) {
+    tags.push({ name: 'File-Name', value: options.fileName });
+  }
+
+  // Add optional source tag (URL/URI reference)
+  if (options.source) {
+    tags.push({ name: 'Source', value: options.source });
+  }
+
   console.log(`\nUploading ${fileName} (${fileSize} bytes)...`);
   console.log('Tags:', tags.map(t => `${t.name}: ${t.value}`).join(', '));
 
@@ -280,34 +292,44 @@ async function uploadMarkdown(filePath: string, options: UploadOptions = {}): Pr
 }
 
 // Parse command line arguments
-function parseArgs(): { filePath: string; author?: string } {
+function parseArgs(): { filePath: string; author?: string; fileName?: string; source?: string } {
   const args = process.argv.slice(2);
   let filePath = '';
   let author: string | undefined;
+  let fileName: string | undefined;
+  let source: string | undefined;
 
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--author' && args[i + 1]) {
       author = args[i + 1];
       i++; // Skip the next arg since it's the author value
+    } else if (args[i] === '--fileName' && args[i + 1]) {
+      fileName = args[i + 1];
+      i++;
+    } else if (args[i] === '--source' && args[i + 1]) {
+      source = args[i + 1];
+      i++;
     } else if (!args[i].startsWith('--')) {
       filePath = args[i];
     }
   }
 
-  return { filePath, author };
+  return { filePath, author, fileName, source };
 }
 
 // Main execution
-const { filePath, author: authorOverride } = parseArgs();
+const { filePath, author: authorOverride, fileName, source } = parseArgs();
 if (!filePath) {
-  console.error('Usage: npm run upload <file-path> [--author "Author Name"]');
-  console.error('       npx tsx scripts/upload-to-arweave.ts <file-path> [--author "Author Name"]');
+  console.error('Usage: npm run upload <file-path> [options]');
+  console.error('       npx tsx scripts/upload-to-arweave.ts <file-path> [options]');
   console.error('\nOptions:');
-  console.error('  --author    Override MP_AUTHOR environment variable');
+  console.error('  --author "Name"     Override MP_AUTHOR environment variable');
+  console.error('  --fileName "name"   Add a File-Name tag for easier lookup');
+  console.error('  --source "URL"      Add a Source tag referencing origin URL/URI');
   process.exit(1);
 }
 
-uploadMarkdown(filePath, { authorOverride })
+uploadMarkdown(filePath, { authorOverride, fileName, source })
   .then((result) => {
     if (result.alreadyExists) {
       const sourceMsg = result.source === 'local' ? 'local log' : 'Arweave network';

@@ -124,6 +124,20 @@ Or directly:
 npx tsx /path/to/markdown-provenance/scripts/upload-to-arweave.ts ./my-document.md
 ```
 
+### Options
+
+All options are optional and can be combined:
+
+```bash
+npm run upload ./doc.md --author "Jane Doe" --fileName "my-article" --source "https://example.com/original"
+```
+
+| Option | Description |
+|--------|-------------|
+| `--author "Name"` | Override the `MP_AUTHOR` environment variable |
+| `--fileName "name"` | Add a `File-Name` tag for easier lookup on Arweave |
+| `--source "URL"` | Add a `Source` tag referencing the origin URL or URI |
+
 ## Output
 
 On success, you'll receive:
@@ -151,7 +165,9 @@ Each upload includes these metadata tags:
 |-----|-------|
 | App-Name | Markdown Provenance |
 | App-Version | 0.0.1 |
-| Author | From `MP_AUTHOR` env var (if set) |
+| Author | From `MP_AUTHOR` env var or `--author` flag (if set) |
+| File-Name | From `--fileName` flag (if set) |
+| Source | From `--source` flag (if set) |
 | IPFS-CID | Calculated from file content (CIDv1, SHA-256) |
 | Content-Type | text/markdown |
 | Type | Attestation |

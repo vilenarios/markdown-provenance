@@ -1,6 +1,6 @@
 ---
 description: Upload a markdown file to Arweave permanent storage
-argument-hint: <file-path> [--author "Name"]
+argument-hint: <file-path> [--author "Name"] [--fileName "name"] [--source "URL"]
 allowed-tools: Bash(npm:*), Bash(npx:*), Bash(cd:*), Bash(echo:*), Read
 ---
 
@@ -11,6 +11,8 @@ Upload the specified markdown file to Arweave permanent storage.
 ## Options
 
 - `--author "Name"` - Override the MP_AUTHOR environment variable for this upload
+- `--fileName "name"` - Add a File-Name tag for easier lookup on Arweave
+- `--source "URL"` - Add a Source tag referencing the origin URL or URI
 
 ## Process
 

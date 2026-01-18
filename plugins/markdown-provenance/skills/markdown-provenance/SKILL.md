@@ -71,7 +71,9 @@ The following tags are automatically added to each upload:
 | App-Version | 0.0.1 |
 | Type | Attestation |
 | IPFS-CID | (calculated from content) |
-| Author | (from MP_AUTHOR env var, if set) |
+| Author | (from MP_AUTHOR env var or --author flag, if set) |
+| File-Name | (from --fileName flag, if set) |
+| Source | (from --source flag, if set) |
 </tags_applied>
 
 <success_criteria>
