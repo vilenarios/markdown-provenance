@@ -8,6 +8,14 @@ In an age where AI generates millions of pieces of content daily, proving the au
 
 This matters whether you're a writer establishing priority over your ideas, a researcher documenting findings, or anyone who needs to prove "I wrote this first." As deepfakes proliferate and AI-generated content becomes indistinguishable from human work, having a tamper-proof timestamp on the blockchain provides the receipts you need. Think of it as a digital notary—permanent, global, and cryptographically secure.
 
+### Learn More About Content Provenance
+
+- [Content Authenticity Initiative](https://contentauthenticity.org/) — Cross-industry coalition (Adobe, NYT, BBC, Microsoft) building open standards for content provenance
+- [C2PA Technical Standard](https://c2pa.org/) — The open specification for Content Credentials
+- [Deepfakes and Elections: Content Credentials Fight Back](https://spectrum.ieee.org/deepfakes-election) — IEEE Spectrum
+- [How Google and C2PA Are Increasing Transparency](https://blog.google/technology/ai/google-gen-ai-content-transparency-c2pa/) — Google Blog
+- [AI Deepfakes Are a 'Solvable Problem'](https://fortune.com/2025/12/27/alex-bores-ai-deepfakes-solvable-problem-c2pa-free-open-source-standard/) — Fortune
+
 ## Security Note
 
 This command is **explicit invocation only**. It will NOT automatically trigger when you mention "arweave" or "permanent storage" in conversation. You must explicitly run `/markdown-provenance` to upload anything.
