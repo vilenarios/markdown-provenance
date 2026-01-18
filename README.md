@@ -2,6 +2,12 @@
 
 A Claude Code slash command for uploading markdown files to Arweave permanent storage.
 
+## Why Provenance Matters
+
+In an age where AI generates millions of pieces of content daily, proving the authenticity and origin of your work has never been more important. **Strong provenance** means your content has four cryptographically verifiable properties: it's **permanent** (cannot be deleted or altered), **precisely timestamped** (proving exactly when it was created), **signed** (your wallet's cryptographic signature proves you uploaded it), and **unconstrained** (anyone can verify it). By uploading your markdown to Arweave, you anchor something ephemeral into the real time domain with assurances around permanence—proving you authored this content at this specific moment, before anyone else could copy, modify, or claim it.
+
+This matters whether you're a writer establishing priority over your ideas, a researcher documenting findings, or anyone who needs to prove "I wrote this first." As deepfakes proliferate and AI-generated content becomes indistinguishable from human work, having a tamper-proof timestamp on the blockchain provides the receipts you need. Think of it as a digital notary—permanent, global, and cryptographically secure.
+
 ## Security Note
 
 This command is **explicit invocation only**. It will NOT automatically trigger when you mention "arweave" or "permanent storage" in conversation. You must explicitly run `/markdown-provenance` to upload anything.
