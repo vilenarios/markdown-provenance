@@ -237,35 +237,30 @@ wc -l ~/.markdown-provenance/transactions.jsonl
 
 ## Web Viewer
 
-A visual interface for viewing your upload history is available at `plugins/markdown-provenance/viewer/index.html`.
+A visual interface for viewing your upload history.
 
 ### Features
 
-- **Load transactions.jsonl** via file picker or drag-and-drop
-- **View all uploads** in a sortable table with:
-  - Timestamp
-  - Filename
-  - File size
-  - Transaction ID
-  - IPFS CID
+- **Auto-load transactions** when opened via `npm run viewer`
+- **View all uploads** in a sortable table with timestamp, filename, size, transaction ID, and IPFS CID
 - **Quick links** to ViewBlock explorer and direct Arweave URLs
 - **Fetch tags** from Arweave GraphQL to see Author, Source, and other metadata
 - **Statistics** showing total uploads, total size, and latest upload date
 
 ### Usage
 
-Open the viewer in your browser:
-
 ```bash
-# Using the default browser
-open plugins/markdown-provenance/viewer/index.html
-
-# Or with a specific browser
-google-chrome plugins/markdown-provenance/viewer/index.html
-firefox plugins/markdown-provenance/viewer/index.html
+cd plugins/markdown-provenance
+npm run viewer
 ```
 
-Then load your `~/.markdown-provenance/transactions.jsonl` file using the file picker or by dragging and dropping it onto the page.
+This automatically loads your `~/.markdown-provenance/transactions.jsonl` and opens the viewer in your browser.
+
+You can also open the viewer manually and load the file via drag-and-drop:
+
+```bash
+open plugins/markdown-provenance/viewer/index.html
+```
 
 ## How It Works
 
