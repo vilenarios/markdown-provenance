@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "upload": "npx tsx scripts/upload-to-arweave.ts",
-    "generate-wallet": "npx tsx scripts/generate-wallet.ts"
+    "generate-wallet": "npx tsx scripts/generate-wallet.ts",
+    "viewer": "node scripts/open-viewer.js"
   },
   "dependencies": {
     "@ardrive/turbo-sdk": "^1.0.0",
