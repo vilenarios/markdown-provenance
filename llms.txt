@@ -1,0 +1,24 @@
+# Markdown Provenance
+
+> A Claude Code plugin for uploading markdown files to Arweave permanent storage, providing cryptographic proof of authorship and timestamp.
+
+## Overview
+
+Markdown Provenance enables writers, researchers, and content creators to establish verifiable provenance for their work by uploading markdown files to the Arweave permaweb. Each upload is permanent, timestamped, and cryptographically signed.
+
+## Key Features
+
+- Permanent storage on Arweave blockchain
+- IPFS-compatible content addressing (CIDv1)
+- Free uploads for files under 100KB via ArDrive Turbo
+- Deduplication via local log and Arweave GraphQL
+- Web viewer for browsing upload history
+
+## Documentation
+
+- [README.md](https://raw.githubusercontent.com/rickmanelius/markdown-provenance/main/README.md): Full documentation including installation, wallet setup, usage, and troubleshooting
+- [llms-full.txt](https://raw.githubusercontent.com/rickmanelius/markdown-provenance/main/llms-full.txt): Complete documentation in LLM-friendly format
+
+## Optional
+
+- [LICENSE](https://raw.githubusercontent.com/rickmanelius/markdown-provenance/main/LICENSE): MIT License
