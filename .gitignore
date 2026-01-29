@@ -29,3 +29,7 @@ Thumbs.db
 
 # Logs (local transaction log is in ~/.arweave-markdown/)
 *.log
+
+# Viewer's generated files (created by npm run viewer)
+plugins/markdown-provenance/viewer/transactions.jsonl
+plugins/markdown-provenance/viewer/index-loaded.html

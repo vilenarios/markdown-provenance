@@ -649,6 +649,11 @@
       });
     });
 
+    // Auto-load embedded data if present (injected by npm run viewer)
+    if (typeof EMBEDDED_TRANSACTIONS !== 'undefined' && EMBEDDED_TRANSACTIONS) {
+      parseTransactions(EMBEDDED_TRANSACTIONS);
+    }
+
     // Fetch tags from Arweave
     fetchTagsBtn.addEventListener('click', async () => {
       if (transactions.length === 0) return;
