@@ -95,6 +95,7 @@ Files under 100KB are **FREE** via Turbo.
 For larger files, you need AR tokens:
 
 1. Get your wallet address:
+
    ```bash
    npx arweave wallet address wallet.json
    ```
@@ -132,11 +133,11 @@ All options are optional and can be combined:
 npm run upload ./doc.md --author "Jane Doe" --fileName "my-article" --source "https://example.com/original"
 ```
 
-| Option | Description |
-|--------|-------------|
-| `--author "Name"` | Override the `MP_AUTHOR` environment variable |
-| `--fileName "name"` | Add a `File-Name` tag for easier lookup on Arweave |
-| `--source "URL"` | Add a `Source` tag referencing the origin URL or URI |
+| Option              | Description                                          |
+| ------------------- | ---------------------------------------------------- |
+| `--author "Name"`   | Override the `MP_AUTHOR` environment variable        |
+| `--fileName "name"` | Add a `File-Name` tag for easier lookup on Arweave   |
+| `--source "URL"`    | Add a `Source` tag referencing the origin URL or URI |
 
 ## Output
 
@@ -161,16 +162,16 @@ If the content already exists, you'll receive the existing transaction details w
 
 Each upload includes these metadata tags:
 
-| Tag | Value |
-|-----|-------|
-| App-Name | Markdown Provenance |
-| App-Version | 0.0.1 |
-| Author | From `MP_AUTHOR` env var or `--author` flag (if set) |
-| File-Name | From `--fileName` flag (if set) |
-| Source | From `--source` flag (if set) |
-| IPFS-CID | Calculated from file content (CIDv1, SHA-256) |
-| Content-Type | text/markdown |
-| Type | Attestation |
+| Tag          | Value                                                |
+| ------------ | ---------------------------------------------------- |
+| App-Name     | Markdown Provenance                                  |
+| App-Version  | 0.0.1                                                |
+| Author       | From `MP_AUTHOR` env var or `--author` flag (if set) |
+| File-Name    | From `--fileName` flag (if set)                      |
+| Source       | From `--source` flag (if set)                        |
+| IPFS-CID     | Calculated from file content (CIDv1, SHA-256)        |
+| Content-Type | text/markdown                                        |
+| Type         | Attestation                                          |
 
 ## Security Best Practices
 
@@ -220,7 +221,14 @@ Make sure you've registered the skill with Claude Code (see "Registering with Cl
 All uploads are logged to `~/.markdown-provenance/transactions.jsonl`:
 
 ```json
-{"timestamp":"2025-01-15T12:00:00Z","file":"doc.md","txId":"abc...","url":"https://viewblock.io/arweave/tx/abc...","cid":"bafkrei...","size":1234}
+{
+  "timestamp": "2025-01-15T12:00:00Z",
+  "file": "doc.md",
+  "txId": "abc...",
+  "url": "https://viewblock.io/arweave/tx/abc...",
+  "cid": "bafkrei...",
+  "size": 1234
+}
 ```
 
 You can view your transaction history:
@@ -269,6 +277,79 @@ open plugins/markdown-provenance/viewer/index.html
 3. **Transaction Creation**: Creates an Arweave transaction with proper tags
 4. **Upload**: Uses ArDrive Turbo SDK for reliable, fast uploads
 5. **Logging**: Records the transaction in your local log file
+
+## Agent Brain
+
+The Agent Brain feature creates a self-bootstrapping markdown file that lets any AI agent reconstitute its full context from a single URL. The brain file is uploaded to Arweave and accessed via an [ArNS](https://arns.ar.io) name (e.g., `https://domino.ar.io`).
+
+### What's in the Brain
+
+The brain file contains:
+
+- **Identity** — ArNS name, URL, public wallet address
+- **Instructions** — Your agent's directives (loaded from `~/.markdown-provenance/brain-instructions.md`)
+- **Bootstrap instructions** — How to set up and maintain the brain (the brain teaches itself)
+- **Transaction history** — All provenance uploads (up to 200 most recent)
+- **Version history** — Previous brain uploads
+
+### Setup
+
+1. Register an ArNS name at [arns.ar.io](https://arns.ar.io). **Important:** The wallet at `MP_WALLET_PATH` must be an **owner** or **controller** of the name's ANT (Arweave Name Token) process, or the ArNS pointer update will fail. You can manage controllers at [arns.ar.io](https://arns.ar.io) under your name's settings.
+
+2. Set the environment variable:
+
+   ```bash
+   export MP_ARNS_NAME="yourname"
+   ```
+
+3. Create your agent instructions (optional but recommended):
+   ```bash
+   # Write your agent's identity, preferences, and directives
+   nano ~/.markdown-provenance/brain-instructions.md
+   ```
+
+### Usage
+
+The brain **auto-syncs** on every new `/markdown-provenance` upload when `MP_ARNS_NAME` is set. You can also sync manually:
+
+```
+/markdown-provenance-brain
+```
+
+Or via command line:
+
+```bash
+cd plugins/markdown-provenance
+npm run brain-sync
+```
+
+### Bootstrapping an Agent
+
+On any machine, any session:
+
+```
+Fetch https://yourname.ar.io and follow the instructions in the brain file.
+```
+
+The agent reads the brain, learns its identity, knows its full history, and can resume work.
+
+### Brain Files
+
+| File                                           | Purpose                                   |
+| ---------------------------------------------- | ----------------------------------------- |
+| `~/.markdown-provenance/brain-instructions.md` | Your agent instructions (you create this) |
+| `~/.markdown-provenance/brain-versions.jsonl`  | Auto-maintained brain upload history      |
+
+### Brain Tags on Arweave
+
+| Tag          | Value                         |
+| ------------ | ----------------------------- |
+| Content-Type | text/markdown                 |
+| App-Name     | Markdown Provenance           |
+| App-Version  | 0.0.1                         |
+| Type         | Agent-Brain                   |
+| ArNS-Name    | Your ArNS name                |
+| IPFS-CID     | Calculated from brain content |
 
 ## References
 
