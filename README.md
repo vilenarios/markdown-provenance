@@ -22,10 +22,64 @@ This command is **explicit invocation only**. It will NOT automatically trigger 
 
 ## Quick Start
 
-1. Install the plugin (see Installation below)
-2. Set up your Arweave wallet (see Wallet Setup below)
-3. Run: `/markdown-provenance path/to/file.md`
-4. Receive your permanent viewblock.io URL
+### Already have a brain? Bootstrap instantly
+
+If you (or your agent) already have a brain on Arweave, you can reconstitute on any machine:
+
+```
+Fetch https://yourname.ar.io and follow the instructions in the brain file.
+```
+
+The brain file is self-bootstrapping — it contains the agent's identity, instructions, full transaction history, and setup steps. The agent reads it and knows everything.
+
+### First-time setup
+
+#### 1. Install the plugin
+
+```bash
+# Via git clone
+git clone https://github.com/rickmanelius/markdown-provenance.git
+cd markdown-provenance/plugins/markdown-provenance
+npm install
+```
+
+#### 2. Set up your wallet
+
+```bash
+# Generate a new Arweave wallet
+npm run generate-wallet
+
+# Set the environment variable (add to ~/.zshrc or ~/.bashrc)
+export MP_WALLET_PATH="$HOME/.arweave/wallet.json"
+```
+
+#### 3. Upload your first file
+
+```
+/markdown-provenance path/to/file.md
+```
+
+You'll receive a permanent Arweave URL and IPFS CID.
+
+#### 4. Set up the Agent Brain (optional but recommended)
+
+The Agent Brain gives your agent a permanent, portable memory at a human-readable URL like `https://domino.ar.io`.
+
+```bash
+# Register an ArNS name at https://arns.ar.io
+# Your wallet must be an owner or controller of the name's ANT process
+
+# Set the environment variable
+export MP_ARNS_NAME="yourname"
+
+# Write your agent's instructions — its identity, personality, and directives
+nano ~/.markdown-provenance/brain-instructions.md
+
+# Sync the brain to Arweave
+/markdown-provenance-brain
+```
+
+From now on, every `/markdown-provenance` upload automatically updates the brain. Your agent's full context is always available at `https://yourname.ar.io`.
 
 ## Installation
 
